@@ -7,14 +7,15 @@ namespace Game_Example
     {
         private Image sprite;
         private Graphics graphics;
-        private Point position;
+        private Transform transform;
         private Point point;
         private Color backgroundColor;
 
-        public GameObject(Graphics graphics, Point position)
+        public GameObject(Graphics graphics)
         {
             sprite = Image.FromFile(@"Sprites/player.png");
             this.graphics = graphics;
+            transform.position = new Vector2(GameWorld.worldSize.Width/2-sprite.Width/2, GameWorld.worldSize.Height-sprite.Height);
             this.position = position;
             this.position.Y = sprite.Height;
             this.position.X = sprite.Width/2;
@@ -24,23 +25,23 @@ namespace Game_Example
 
         public void Update()
         {
-            if (Keyboard.IsKeyDown(Keys.D))
-            {
-                position.X += 1;
-            }
-            if (Keyboard.IsKeyDown(Keys.A))
-            {
-                position.X -= 1;
-            }
-            if (Keyboard.IsKeyDown(Keys.S))
-            {
-                position.Y -= 1;
-            }
-            if (Keyboard.IsKeyDown(Keys.W))
-            {
-                position.Y += 1;
-            }
-            graphics.DrawImage(sprite, position);
+            //if (Keyboard.IsKeyDown(Keys.D))
+            //{
+            //    position.X += 1;
+            //}
+            //if (Keyboard.IsKeyDown(Keys.A))
+            //{
+            //    position.X -= 1;
+            //}
+            //if (Keyboard.IsKeyDown(Keys.S))
+            //{
+            //    position.Y -= 1;
+            //}
+            //if (Keyboard.IsKeyDown(Keys.W))
+            //{
+            //    position.Y += 1;
+            //}
+            graphics.DrawImage(sprite, transform.Position.x, transform.Position.Y);
         }
     }
 }

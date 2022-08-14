@@ -8,12 +8,12 @@ namespace Game_Example
         private Graphics dc;
         private BufferedGraphics backBuffer;
         private Color backgroundColor;
-        private Size worldSize;
+        public static Size worldSize { get; private set; }
         private GameObject gameObject;
 
         public GameWorld(Rectangle displayRectangle, Graphics graphics)
         {
-            this.worldSize = displayRectangle.Size;
+            worldSize = displayRectangle.Size;
             this.dc = graphics;
             this.backBuffer = BufferedGraphicsManager.Current.Allocate(graphics, displayRectangle);
             this.dc = backBuffer.Graphics;
